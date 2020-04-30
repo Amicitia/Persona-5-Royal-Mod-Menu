@@ -14,6 +14,7 @@ Amicitia Mod Menu[w][e]
 [s]Calendar[f 4 26 9 102][e]
 [s]Check Phone/Auto Recover[f 4 26 10 103][e]
 [s]About[f 4 26 11 104][e]
+[s]Movies[f 4 26 12 105][e]
 
 [dlg GENERIC_HELP_93]
 [s]Edit your Personas, items, stats,[n]money, or even your name.[e]
@@ -610,7 +611,7 @@ Load Field[f 4 26 1 247][e]
 Reload Current Field[f 4 26 2 248][e]
 
 [dlg GENERIC_HELP_246]
-[s]Input the 6 digits of a[n][clr 9]field pack's[clr 0] filename[n](found in ps3.cpk/field)[e]
+[s]Input the 6 digits of a[n][clr 9]field pack's[clr 0] filename[n](found in ps4R.cpk/field)[e]
 
 [dlg GENERIC_HELP_247]
 [s]Attempt to load the selected[n]field. [clr 9]WARNING: Some fields may[n]softlock the game.[clr 0][e]
@@ -628,13 +629,13 @@ Enter KeyFree Event ID[f 4 26 2 253][e]
 Load KeyFree Event[f 4 26 3 254][e]
 
 [dlg GENERIC_HELP_251]
-[s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in data.cpk/event)[e]
+[s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in dataR.cpk/event)[e]
 
 [dlg GENERIC_HELP_252]
 [s]Attempt to load the selected[n]event. [clr 9]WARNING: Some events may[n]softlock the game.[clr 0][e]
 
 [dlg GENERIC_HELP_253]
-[s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in ps3.cpk/field).[clr 0][e]
+[s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in ps4R.cpk/field).[clr 0][e]
 
 [dlg GENERIC_HELP_254]
 [s]Attempt to load the selected[n]KeyFree event. [clr 9]WARNING: Some events may[n]softlock the game.[clr 0][e]
@@ -959,16 +960,16 @@ Select an item's model ID to[n]spawn it and connect it to[n]the character's mode
 Select a range of flags[n]to either enable or disable.[w][e]
 
 [dlg ItemSpawnPrompt]
-Enter the first half of the model's[n]ID from data.cpk/model/item.[n](Max 4 digits, press Circle to end).[w][e]
+Enter the first half of the model's[n]ID from dataR.cpk/model/item.[n](Max 4 digits, press Circle to end).[w][e]
 
 [dlg ItemSpawnPrompt2]
-Enter the last half of the model's[n]ID from data.cpk/model/item.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the last half of the model's[n]ID from dataR.cpk/model/item.[n](Max 3 digits, press Circle to end).[w][e]
 
 [dlg ObjectSpawnPrompt]
-Enter the first half of the[n]model's ID from data.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the first half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
 
 [dlg ObjectSpawnPrompt2]
-Enter the last half of the[n]model's ID from data.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the last half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
 
 [dlg FlagRangePrompt]
 Enter the start of the[n]range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
@@ -978,3 +979,6 @@ Enter the end of the[n]range to narrow down.[n](Max 4 digits, press Circle to en
 
 [dlg GENERIC_HELP_311]
 Unlocks all Personas in the[n]Compendium. [clr 9]This will delete all[n]Personas in your current stock![clr 0][w][e]
+
+[dlg ComingSoon[Feature not implemented]]
+Coming Soon TM[w][e]

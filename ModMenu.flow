@@ -75,6 +75,9 @@ void ModMenuDisplay()
             case 11:
                 AboutDialogDisplay();
                 break;
+            case 12: // Movie viewer
+                ComingSoon();
+                break;
         }
     }
 }
@@ -2349,4 +2352,10 @@ void CalendarFade()
 {
     FADEOUT( 15, 10 );
     FADE_SYNC();
+}
+
+// Coming Soon dialog
+void ComingSoon() 
+{
+    DisplayMessagePrompt( ComingSoon );
 }

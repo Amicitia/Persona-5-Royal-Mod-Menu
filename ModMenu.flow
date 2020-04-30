@@ -76,7 +76,42 @@ void ModMenuDisplay()
                 AboutDialogDisplay();
                 break;
             case 12: // Movie viewer
-                ComingSoon();
+                //ComingSoon();
+                MoviePlay();
+                break;
+            case 13: // Load debug scripts - demo for now
+                DBG_SCRIPT_MENU( "test/nowatari/dungeon_test.bf" );
+                break;
+            case 14: // TEST. Subject to change
+                PARTY_IN( 2 );
+                BIT_ON( 0x40000000 + 48 );
+                PARTY_IN( 3 );
+                BIT_ON( 0x40000000 + 49 );
+                PARTY_IN( 4 );
+                BIT_ON( 0x40000000 + 50 );
+                PARTY_IN( 5 );
+                BIT_ON( 0x40000000 + 51 );
+                PARTY_IN( 6 );
+                BIT_ON( 0x40000000 + 52 );
+                PARTY_IN( 7 );
+                BIT_ON( 0x40000000 + 53 );
+                PARTY_IN( 8 );
+                BIT_ON( 0x40000000 + 54 );
+                PARTY_IN( 9 );
+                BIT_ON( 0x40000000 + 55 );
+                PARTY_IN( 10 );
+                BIT_ON( 0x40000000 + 56 );
+                break;
+            case 15: // Third semester
+                SET_DBG_DAY( 1, 11, 1 );
+                SET_NEXT_DAY( 1, 11, 2 );
+                MSG(RankUp1, 0);
+                RankUpCommu(8, 10); // Rank up Goro
+                MSG(RankUp2, 0);
+                RankUpCommu(21, 10); // Rank up ???
+                MSG(RankUp3, 0);
+                //RankUpCommu(22, 10); // Rank up ???
+                CallCalendar();
                 break;
         }
     }
@@ -1990,20 +2025,43 @@ void SelectHUDDisplayFlag()
 
 void SelectAddPartyMember()
 {
-    int unit = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 ) + 48;
-    if ( unit == 47 ) // Cancel
+    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
+    int flg = unitIdSelected + 48;
+    if ( flg == 47 ) // Cancel
         return;
-        
-    BIT_ON( 0 + 0x0800 + 0x0800 + 0x1000 + 0x0100 + unit );
+
+    if ( flg > 56 ) {
+        // Prolly adding spoiler charas are different matter. Test
+        switch ( unitIdSelected ) {
+            case 9: // Black Mask
+                BIT_ON( 0x40000000 + 272 ); // Black Mask
+                BIT_OFF( 0x40000000 + 55 );
+                break;
+            case 10: // Sumire
+                BIT_ON( 0x40000000 + 155 ); // Sumire
+                BIT_OFF( 0x40000000 + 56 );
+                break;
+        }
+    }
+    else{
+        BIT_ON( 0x40000000 + flg );
+    }
 }
 
 void SelectRemovePartyMember()
 {
-    int unit = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 ) + 48;
-    if ( unit == 47 ) // Cancel
+    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
+    int flg = unitIdSelected + 48;
+    if ( flg == 47 ) // Cancel
         return;
-        
-    BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 0x0100 + unit );
+
+    if ( flg > 56 ) {
+        // Prolly removing spoiler charas are different matter. Test
+        BIT_OFF( 0x40000000 + 272 );
+    }
+    else{
+        BIT_OFF( 0x40000000 + flg );
+    }
 }
 
 void EnablePartyEditing()
@@ -2358,4 +2416,25 @@ void CalendarFade()
 void ComingSoon() 
 {
     DisplayMessagePrompt( ComingSoon );
+}
+
+// Fast rank up commus
+void RankUpCommu(int cmmId, int lvl) 
+{
+    CMM_RANKUP( cmmId, lvl, 1 );
+    
+    if ( !CMM_EXIST( cmmId ) ) {
+            CMM_OPEN( cmmId );
+    }
+    
+    CMM_SET_LV( cmmId, lvl );
+    CMM_ADD_POINT( cmmId, 9999 );
+}
+
+// Play a movie USM
+void MoviePlay()
+{
+    int movieId = SelectNumberPrompt( MoviePlayPrompt, 3 ); 
+    MOVIE_PLAY( movieId );
+    MOVIE_SYNC();
 }

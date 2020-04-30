@@ -1,5 +1,5 @@
-# Persona 5 Mod Menu
-**Custom scripts for Persona 5 that replace the square button function with a fully featured trainer**
+# Persona 5 Royal Mod Menu
+**Custom scripts for Persona 5 Royal that replace the square button function with a fully featured trainer**
 ![Image of the menu ingame](https://cdn.discordapp.com/attachments/428021649246388224/447597680018063372/unknown.png)
 ## Notable Features
 - Add Personas, add skills to any party member's currently equipped Persona, delete all Personas currently in the protagonist's stock
@@ -14,7 +14,7 @@
 - Instantly change the current date and weather
 - Add Personas and change you or your party members' Skills
 ## Usage
-Once you've added [mod.cpk support](https://shrinefox.github.io/guides/p5/mod-cpk) to your copy of Persona 5 (PS3), you can use the [Mod Compendium](https://shrinefox.github.io/guides/p5/mod-compendium) to run the [latest compiled Release](https://github.com/ShrineFox/Persona-5-Mod-Menu/releases) in-game.
+Once you've managed to port all `ps4R.cpk` contents into an another used CPK (`like ps4_movieR.cpk`), you can use the [Mod Compendium](https://shrinefox.github.io/guides/p5/mod-compendium) to run the [latest compiled Release](https://github.com/RayFirefist/Persona-5-Royal-Mod-Menu/releases) (COMING SOON) or your compiled version in-game.
 ## Compiling
 1. Download the latest build of TGE's [AtlusScriptCompiler](https://ci.appveyor.com/project/TGEnigma/atlusscripttoolchain/build/artifacts) ([source](https://github.com/TGEnigma/AtlusScriptToolchain)), which you can use to compile the **.flow** and **.msg** scripts in this repository and recompile them into **.bf** format.
 2. Also download [TGE's PAKTools](https://github.com/TGEnigma/AtlusFileSystemLibrary/releases).
@@ -27,10 +27,7 @@ There are 3 different scripts that must be recompiled:
 - **field.bf** (for the field) found in **fldPack.pac**
 - **dungeon.bf** (for palaces) found in **dngPack.pac**
 - **at_dng.bf** (for mementos) found in **atDngPack.pac**
-Each of the PAC files can be located in ps3.cpk\field.
+Each of the PAC files can be located in ps4R.cpk\field.
 
 In order to be able to use the Mod Menu before unlocking the square button functionality,
-- **fscr0150_002_100.bf** must go in the \script\field folder of the mod.
-
-In order to use the Amicitia UI logo for the menu,
-- **sharedUI.spd** must go in the \camp\shared folder of the mod.
+- **fscr0150_002_100.bf** must go in the \script\field folder of the mod. (To be fixed)

@@ -210,6 +210,9 @@ void PersonaEditorOpen()
 			case 4:
                 EvolvePersona();
                 break;
+            case 5:
+                EvolvePersonaR();
+                break;
         }
     }
 }
@@ -352,6 +355,50 @@ void EvolvePersona()
             break;
         case 6:
             PERSONA_EVOLUTION( 8 );
+            break;
+        case 7:
+            PERSONA_EVOLUTION( 9 );
+            break;
+        case 8:
+            PERSONA_EVOLUTION( 10 );
+            break;
+    }
+}
+
+void EvolvePersonaR()
+{
+    int selection = SEL_GENERIC_NOT_HELP( -1, UnitSelect3 );
+
+    switch ( selection )
+    {
+        case -1:
+            break;
+        case 0:
+            PERSONA_EVOLUTION_02( 2 );
+            break;
+        case 1:
+            PERSONA_EVOLUTION_02( 3 );
+            break;
+        case 2:
+            PERSONA_EVOLUTION_02( 4 );
+            break;
+        case 3:
+            PERSONA_EVOLUTION_02( 5 );
+            break;
+        case 4:
+            PERSONA_EVOLUTION_02( 6 );
+            break;
+        case 5:
+            PERSONA_EVOLUTION_02( 7 );
+            break;
+        case 6:
+            PERSONA_EVOLUTION_02( 8 );
+            break;
+        case 7:
+            PERSONA_EVOLUTION_02( 9 );
+            break;
+        case 8:
+            PERSONA_EVOLUTION_02( 10 );
             break;
     }
 }
@@ -1062,7 +1109,7 @@ void BattleTypeSelect()
 
 void RegularBattle() 
 {
-    int encount = SelectNumberPrompt( EncounterPrompt, 3 );
+    int encount = SelectNumberPrompt( EncounterPrompt, 4 );
     
     if ( encount == -1 )
         return;

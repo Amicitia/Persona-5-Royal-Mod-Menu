@@ -459,6 +459,7 @@ Delete Personas[f 4 26 1 212][e]
 Add Skill[f 4 26 2 213][e]
 Unlock Full Compendium[f 4 26 3 214][e]
 Evolve Persona[f 4 26 4 215][e]
+Evolve Persona (Royal)[f 4 26 5 216][e]
 
 [dlg GENERIC_HELP_211]
 [s]Input a Persona's name or ID[n]to add it to your stock.[e]
@@ -475,6 +476,8 @@ Evolve Persona[f 4 26 4 215][e]
 [dlg GENERIC_HELP_215]
 [s]Evolve a party member's Persona[n]into its Ultimate form.[e]
 
+[dlg GENERIC_HELP_216]
+[s]Evolve a party member's Persona[n]into its Royal form.[e]
 
 [dlg UnitMenuName]
 Select Party Member[w][e]
@@ -511,6 +514,8 @@ Yusuke[e]
 Makoto[e]
 Haru[e]
 Futaba[e]
+Akechi[e]
+Yoshizawa[e]
 
 [dlg PersonaDelPrompt [Delete Personas]]
 This will permanently remove all 
@@ -941,7 +946,7 @@ Velvet Twins[e]
 MISC[e]
 
 [dlg EncounterPrompt]
-Set the number of the encounter[n]you want to fight (3 digits).[w][e]
+Set the number of the encounter[n]you want to fight (4 digits).[w][e]
 
 [sel FlagMassEditor]
 Disable all flags[e]

@@ -106,12 +106,19 @@ void ModMenuDisplay()
                 SET_DBG_DAY( 1, 11, 1 );
                 SET_NEXT_DAY( 1, 11, 2 );
                 MSG(RankUp1, 0);
-                RankUpCommu(8, 10); // Rank up Goro
-                MSG(RankUp2, 0);
-                RankUpCommu(21, 10); // Rank up ???
-                MSG(RankUp3, 0);
-                //RankUpCommu(22, 10); // Rank up ???
+                MaxNewCommu();
                 CallCalendar();
+                break;
+            case 16: // Reverse test
+                CMM_SET_REVERSE(0,0);
+                CMM_SET_BROKEN(0,0);
+                break;
+            case 17: // Stonks
+                FLD_DUNGEON_RESULT_SET_EXP(1000000);
+                FLD_DUNGEON_RESULT_SYNC();
+                break;
+            case 18: // Palace boss
+                ManualBossSelect();
                 break;
         }
     }
@@ -1857,7 +1864,7 @@ void CalendarSetNextDaySelect()
        )
     {
         MSG_SYSTEM( CalendarBackwardsError );
-        return;
+        //return; // Test bypass
     }
     
     SET_NEXT_DAY( month, day, 1 );
@@ -2081,12 +2088,12 @@ void SelectAddPartyMember()
         // Prolly adding spoiler charas are different matter. Test
         switch ( unitIdSelected ) {
             case 9: // Black Mask
-                BIT_ON( 0x40000000 + 272 ); // Black Mask
-                BIT_OFF( 0x40000000 + 55 );
+                BIT_ON( 0x40000000 + 272 ); // Enables Black Mask's flag
+                //BIT_OFF( 0x40000000 + 55 );
                 break;
             case 10: // Sumire
-                BIT_ON( 0x40000000 + 155 ); // Sumire
-                BIT_OFF( 0x40000000 + 56 );
+                BIT_ON( 0x40000000 + 155 ); // Sumire?
+                //BIT_OFF( 0x40000000 + 56 );
                 break;
         }
     }
@@ -2416,6 +2423,7 @@ void CleanlinessEditorDisplay()
 void AboutDialogDisplay() 
 {
     DisplayMessagePrompt( AboutDlg );
+    DisplayMessagePrompt( AboutDlg2 );
 }
 
 void ReloadPreviousField()
@@ -2459,6 +2467,8 @@ void CalendarFade()
     FADE_SYNC();
 }
 
+// Ray's functions starts here
+
 // Coming Soon dialog
 void ComingSoon() 
 {
@@ -2482,6 +2492,74 @@ void RankUpCommu(int cmmId, int lvl)
 void MoviePlay()
 {
     int movieId = SelectNumberPrompt( MoviePlayPrompt, 3 ); 
+    
+    // In order to avoid misinputs
+    if (movieId == -1)
+        return;
+    
+    // Load the movie
     MOVIE_PLAY( movieId );
     MOVIE_SYNC();
+}
+
+// Fast message callback
+void Message(string message)
+{
+    // Display the dialog window
+    MSG_WND_DSP(); 
+
+    // Display dialog
+    MSG( message, 0 ); 
+    
+    // Close the dialog window
+    MSG_WND_CLS(); 
+}
+
+// Max all commus ranks in one shot (expect animation shit taking long)
+void MaxAllCommus()
+{
+    for (int i = 0; i <= 23; i++)
+    {
+        if (i<=21)  // Older confidants
+            RankUpCommu(i, 10);
+        else        // Newer confidants
+        {
+            int newId;
+            switch (i){
+                case 22:
+                    newId = 28;
+                    break;
+                case 23:
+                    newId = 29;
+                    break;
+                case 24:
+                    newId = 30;
+                    break;
+                default:
+                    newId = 28;
+                    break;
+            }
+            RankUpCommu(newId, 10);
+        }
+    }
+}
+
+// Starts a boss battle by defining manually the ID
+void ManualBossSelect()
+{
+    int bossId = SelectNumberPrompt( ManualBossFightPrompt, 2 ); 
+    
+    // In order to avoid misinputs
+    if (bossId == -1)
+        return;
+    
+    // Start Boss Battle
+    FLD_START_BOSS( bossId );
+}
+
+void MaxNewCommu()
+{
+    RankUpCommu(28, 10);
+    RankUpCommu(29, 10);
+    RankUpCommu(30, 10);
 }

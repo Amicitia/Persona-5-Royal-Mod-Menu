@@ -120,6 +120,9 @@ void ModMenuDisplay()
             case 18: // Palace boss
                 ManualBossSelect();
                 break;
+            case 19: // Set level 99
+                ALL_LEVEL_MAX();
+                break;
         }
     }
 }
@@ -2094,6 +2097,7 @@ void SelectAddPartyMember()
             case 10: // Sumire
                 BIT_ON( 0x40000000 + 155 ); // Sumire?
                 //BIT_OFF( 0x40000000 + 56 );
+                BIT_OFF( 805306368 + 13 ); // ???
                 break;
         }
     }
@@ -2111,7 +2115,17 @@ void SelectRemovePartyMember()
 
     if ( flg > 56 ) {
         // Prolly removing spoiler charas are different matter. Test
-        BIT_OFF( 0x40000000 + 272 );
+        switch ( unitIdSelected ) {
+            case 9: // Black Mask
+                BIT_OFF( 0x40000000 + 272 ); // Enables Black Mask's flag
+                //BIT_OFF( 0x40000000 + 55 );
+                break;
+            case 10: // Sumire
+                BIT_OFF( 0x40000000 + 155 ); // Sumire?
+                //BIT_OFF( 0x40000000 + 56 );
+                BIT_ON( 805306368 + 13 ); // ???
+                break;
+        }
     }
     else{
         BIT_OFF( 0x40000000 + flg );
@@ -2177,13 +2191,13 @@ void SelectRomanceFlags() {
     if ( lover == -1 )
         return;
     
-    lover += (0x0800 + 720);
+    lover += (0x40000000 + 720);
     SelectItemToggle( lover );
 }
 
 void SelectBitToggle()
 {
-    int id = SelectNumber( 4 );
+    int id = SelectNumber( 5 );
     if (id == -1)
         return;
     
@@ -2562,4 +2576,147 @@ void MaxNewCommu()
     RankUpCommu(28, 10);
     RankUpCommu(29, 10);
     RankUpCommu(30, 10);
+}
+
+void ALL_LEVEL_MAX()
+{
+    SET_HUMAN_LV( 1, 99 ); // Set level of Ren as 99
+    int localVariable8 = 1;
+    _38:
+    int localVariable10 = 0;
+    
+    if ( localVariable8 < 11 )
+    {
+        int localVariable9 = FUNCTION_17B( localVariable8 );
+        SET_PERSONA_LV( localVariable8, localVariable9, 99 );
+        localVariable10 = 0;
+        _40:
+        
+        if ( localVariable10 < 5 )
+        {
+            ADD_EQUIP_PERSONA_PARAM( localVariable8, localVariable10, 99 );
+            localVariable10 = localVariable10 + 1;
+            goto _40;
+        }
+
+        localVariable8 = localVariable8 + 1;
+        goto _38;
+    }
+
+}
+
+void SetAkechiRobinHood()
+{
+    SET_PERSONA_LV( 10, 240, 43 );
+    SET_EQUIP( 10, 0, 0 + 249 );
+    SET_EQUIP( 10, 4, 0x00008000 + 253 );
+    SET_EQUIP( 10, 1, 0x1000 + 121 );
+    SET_EQUIP( 10, 2, 0x2000 + 271 );
+}
+
+// WIP, can't check correctly since I CAN'T FUCKING READ CHINESE
+void SetSumire()
+{
+    SET_PERSONA_LV( 10, 240, 53 );
+    REMOVE_PERSONA_SKILL( 10, 240, 55 );
+    REMOVE_PERSONA_SKILL( 10, 240, 236 );
+    ADD_PERSONA_SKILL( 10, 240, 231 );
+    ADD_PERSONA_SKILL( 10, 240, 56 );
+    SET_EQUIP( 10, 0, 0 + 250 );
+    SET_EQUIP( 10, 4, 0x00008000 + 254 );
+    SET_EQUIP( 10, 1, 0x1000 + 141 );
+}
+
+void SetAkechiBlackMask()
+{
+    SET_PERSONA_LV( 10, 240, 75 );
+    REMOVE_PERSONA_SKILL( 10, 240, 253 );
+    REMOVE_PERSONA_SKILL( 10, 240, 58 );
+    ADD_PERSONA_SKILL( 10, 240, 213 );
+    ADD_PERSONA_SKILL( 10, 240, 56 );
+    ADD_PERSONA_SKILL( 10, 240, 59 );
+    ADD_PERSONA_SKILL( 10, 240, 302 );
+    ADD_PERSONA_SKILL( 10, 240, 979 );
+    ADD_PERSONA_SKILL( 10, 240, 857 );
+    -2;
+    0x00008000 + 255;
+    
+    if ( REM( localVariable31, 100 ) == WAIT( 10 ) )
+    {
+        SET_EQUIP( 10, 4, 0x00008000 + 255 );
+    }
+    else 
+    {
+        SET_ITEM_NUM( 0x00008000 + 253, 0 );
+        SET_ITEM_NUM( 0x00008000 + 254, 0 );
+    }
+
+    SET_EQUIP( 10, 0, 0 + 251 );
+    SET_EQUIP( 10, 1, 0x1000 + 11 );
+    74;
+    1;
+    
+    if ( REM( localVariable31, 100 ) <= WAIT( 9 ) )
+    {
+        SET_PERSONA_LV( 9, 209, 75 );
+    }
+    else 
+    {
+        1;
+        WAIT( 9 );
+        SET_PERSONA_LV( 9, 209, REM( localVariable31, 100 ) );
+    }
+
+    PERSONA_EVOLUTION( 9 );
+    REMOVE_PERSONA_SKILL( 9, 239, 71 );
+    REMOVE_PERSONA_SKILL( 9, 239, 202 );
+    REMOVE_PERSONA_SKILL( 9, 239, 55 );
+    REMOVE_PERSONA_SKILL( 9, 239, 65 );
+    REMOVE_PERSONA_SKILL( 9, 239, 51 );
+    REMOVE_PERSONA_SKILL( 9, 239, 61 );
+    REMOVE_PERSONA_SKILL( 9, 239, 985 );
+    REMOVE_PERSONA_SKILL( 9, 239, 56 );
+    REMOVE_PERSONA_SKILL( 9, 239, 66 );
+    REMOVE_PERSONA_SKILL( 9, 239, 840 );
+    REMOVE_PERSONA_SKILL( 9, 239, 311 );
+    REMOVE_PERSONA_SKILL( 9, 239, 53 );
+    REMOVE_PERSONA_SKILL( 9, 239, 63 );
+    REMOVE_PERSONA_SKILL( 9, 239, 72 );
+    REMOVE_PERSONA_SKILL( 9, 239, 348 );
+    REMOVE_PERSONA_SKILL( 9, 239, 279 );
+    REMOVE_PERSONA_SKILL( 9, 239, 227 );
+    REMOVE_PERSONA_SKILL( 9, 239, 350 );
+    REMOVE_PERSONA_SKILL( 9, 239, 351 );
+    REMOVE_PERSONA_SKILL( 9, 239, 371 );
+    ADD_PERSONA_SKILL( 9, 239, 279 );
+    ADD_PERSONA_SKILL( 9, 239, 72 );
+    ADD_PERSONA_SKILL( 9, 239, 348 );
+    ADD_PERSONA_SKILL( 9, 239, 227 );
+    ADD_PERSONA_SKILL( 9, 239, 66 );
+    ADD_PERSONA_SKILL( 9, 239, 985 );
+    ADD_PERSONA_SKILL( 9, 239, 840 );
+    ADD_PERSONA_SKILL( 9, 239, 838 );
+    -2;
+    0x00008000 + 249;
+    
+    if ( REM( localVariable31, 100 ) == WAIT( 9 ) )
+    {
+        SET_EQUIP( 9, 4, 0x00008000 + 249 );
+    }
+    else 
+    {
+        SET_ITEM_NUM( 0x00008000 + 224, 0 );
+    }
+
+    SET_EQUIP( 9, 0, 0 + 246 );
+    SET_EQUIP( 9, 1, 0x1000 + 12 );
+    SET_EQUIP( 9, 2, 0x2000 + 9 );
+    SET_EQUIP( 9, 3, 28672 + 13 );
+    RECOVERY_ALL();
+    
+    if ( !BIT_CHK( 0x40000000 + 14 ) )
+    {
+        SET_ITEM_NUM( 28672 + 24, 0 );
+    }
+
 }

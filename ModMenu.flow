@@ -38,13 +38,13 @@ void ModMenuDisplay()
         switch ( selection )
         {
             case -1:
-                return;
+                break;
             case 0:
                 PlayerEditorDisplay();
                 break;
             case 1:
-                BattleTypeSelect();
-                return;
+				BattleTypeSelect();
+                break;
             case 2: 
                 TeleportModeStart();
                 break;
@@ -53,10 +53,10 @@ void ModMenuDisplay()
                 break;
             case 4:
                 FieldSelect();
-                return;
+                break;
             case 5:
                 EventSelect();
-                return;
+                break;
             case 6:
                 CameraEditorDisplay(); 
                 break;
@@ -68,60 +68,15 @@ void ModMenuDisplay()
                 break;
             case 9: 
                 CalendarEditorDisplay(); 
-                return;
-            case 10: 
-                CallOriginalSquareMenu();
                 break;
-            case 11:
-                AboutDialogDisplay();
-                break;
-            case 12: // Movie viewer
-                //ComingSoon();
+			case 10:
                 MoviePlay();
                 break;
-            case 13: // Load debug scripts - demo for now
-                DBG_SCRIPT_MENU( "test/nowatari/dungeon_test.bf" );
+            case 11: 
+                CallOriginalSquareMenu();
                 break;
-            case 14: // TEST. Subject to change
-                PARTY_IN( 2 );
-                BIT_ON( 0x40000000 + 48 );
-                PARTY_IN( 3 );
-                BIT_ON( 0x40000000 + 49 );
-                PARTY_IN( 4 );
-                BIT_ON( 0x40000000 + 50 );
-                PARTY_IN( 5 );
-                BIT_ON( 0x40000000 + 51 );
-                PARTY_IN( 6 );
-                BIT_ON( 0x40000000 + 52 );
-                PARTY_IN( 7 );
-                BIT_ON( 0x40000000 + 53 );
-                PARTY_IN( 8 );
-                BIT_ON( 0x40000000 + 54 );
-                PARTY_IN( 9 );
-                BIT_ON( 0x40000000 + 55 );
-                PARTY_IN( 10 );
-                BIT_ON( 0x40000000 + 56 );
-                break;
-            case 15: // Third semester
-                SET_DBG_DAY( 1, 11, 1 );
-                SET_NEXT_DAY( 1, 11, 2 );
-                MSG(RankUp1, 0);
-                MaxNewCommu();
-                CallCalendar();
-                break;
-            case 16: // Reverse test
-                CMM_SET_REVERSE(0,0);
-                CMM_SET_BROKEN(0,0);
-                break;
-            case 17: // Stonks
-                FLD_DUNGEON_RESULT_SET_EXP(1000000);
-                FLD_DUNGEON_RESULT_SYNC();
-                break;
-            case 18: // Palace boss
-                ManualBossSelect();
-                break;
-            case 19: // Set level 99
-                ALL_LEVEL_MAX();
+            case 12:
+                DisplayMessagePrompt( AboutDlg );
                 break;
         }
     }
@@ -190,6 +145,9 @@ void PlayerEditorDisplay()
                 break;
             case 9: 
                 PlayerSetMaxMoney();
+                break;
+			case 10: // Set level 99
+                ALL_LEVEL_MAX();
                 break;
         }
     }
@@ -372,7 +330,12 @@ void EvolvePersona()
         case 8:
             PERSONA_EVOLUTION( 10 );
             break;
-    }
+		case 9:
+			for ( int i = 2; i <= 10; i++ ) 
+			{
+				PERSONA_EVOLUTION( i );
+			}
+			break;
 }
 
 void EvolvePersonaR()
@@ -410,6 +373,12 @@ void EvolvePersonaR()
         case 8:
             PERSONA_EVOLUTION_02( 10 );
             break;
+		case 9:
+			for ( int i = 2; i <= 10; i++ ) 
+			{
+				PERSONA_EVOLUTION_02( i );
+			}
+			break;
     }
 }
 
@@ -527,7 +496,7 @@ void CommuSetRankSelect()
         return;
         
     DisplayMessagePrompt( CmmDialog2 );
-    int lvl = SEL_GENERIC_NOT_HELP( -1, OneThruTen ) + 1;
+    int lvl = SEL_GENERIC_NOT_HELP( -1, Select1to10Dialog ) + 1;
     
     if ( lvl == 0 )
         return;
@@ -1132,8 +1101,24 @@ void RegularBattle()
 // Boss Select
 void BossSelectMenu()
 {
-    int selection = SEL_GENERIC_NOT_HELP( PalaceName, PalaceMenu );
-        
+	int selection = SEL_GENERIC_NOT_HELP( BossTypeName, BossType );
+	
+	switch (selection) {
+		case -1:
+            break;
+		case 0:
+			ManualBossSelect();
+			break;
+		case 1:
+			PalaceSelectMenu();
+			break;
+	}
+}
+
+//Dungeon/Palace Select
+void PalaceSelectMenu()
+{
+	int selection = SEL_GENERIC_NOT_HELP( PalaceName, PalaceMenu );
     switch ( selection )
     {
         case -1:
@@ -1168,7 +1153,6 @@ void BossSelectMenu()
     }
 }
 
-//Dungeon/Palace Select
 void Palace1()
 {
     int selection = SEL_GENERIC_NOT_HELP( -1, Palace1 );
@@ -1813,6 +1797,13 @@ void CalendarEditorDisplay()
 			case 3:
 				LoopCurrentTime();
 				break;
+			case 4: // Third semester
+                SET_DBG_DAY( 1, 11, 1 );
+                SET_NEXT_DAY( 1, 11, 2 );
+                MSG(RankUp1, 0);
+                MaxNewCommu();
+                CallCalendar();
+                break;
         }
     }
 }
@@ -2082,13 +2073,19 @@ void SelectHUDDisplayFlag()
 
 void SelectAddPartyMember()
 {
-    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
+    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect3 );
     int flg = unitIdSelected + 48;
     if ( flg == 47 ) // Cancel
         return;
-
-    if ( flg > 56 ) {
-        // Prolly adding spoiler charas are different matter. Test
+	
+	if (flg == 58) {
+		for ( int i = 2; i <= 10; i++ ) 
+		{
+			PERSONA_EVOLUTION( i );
+		}
+	}
+	else {
+		if ( flg > 56 ) {
         switch ( unitIdSelected ) {
             case 9: // Black Mask
                 BIT_ON( 0x40000000 + 272 ); // Enables Black Mask's flag
@@ -2099,11 +2096,13 @@ void SelectAddPartyMember()
                 //BIT_OFF( 0x40000000 + 56 );
                 BIT_OFF( 805306368 + 13 ); // ???
                 break;
-        }
-    }
-    else{
-        BIT_ON( 0x40000000 + flg );
-    }
+			}
+		}
+		else {
+			BIT_ON( 0x40000000 + flg );
+		}
+	}
+    
 }
 
 void SelectRemovePartyMember()
@@ -2113,23 +2112,31 @@ void SelectRemovePartyMember()
     if ( flg == 47 ) // Cancel
         return;
 
-    if ( flg > 56 ) {
-        // Prolly removing spoiler charas are different matter. Test
-        switch ( unitIdSelected ) {
-            case 9: // Black Mask
-                BIT_OFF( 0x40000000 + 272 ); // Enables Black Mask's flag
-                //BIT_OFF( 0x40000000 + 55 );
-                break;
-            case 10: // Sumire
-                BIT_OFF( 0x40000000 + 155 ); // Sumire?
-                //BIT_OFF( 0x40000000 + 56 );
-                BIT_ON( 805306368 + 13 ); // ???
-                break;
-        }
-    }
-    else{
-        BIT_OFF( 0x40000000 + flg );
-    }
+	if (flg == 58) {
+		for ( int i = 2; i <= 10; i++ ) 
+		{
+			PERSONA_EVOLUTION( i );
+		}
+	}
+	else {
+		if ( flg > 56 ) {
+			// Prolly removing spoiler charas are different matter. Test
+			switch ( unitIdSelected ) {
+				case 9: // Black Mask
+					BIT_OFF( 0x40000000 + 272 ); // Enables Black Mask's flag
+					//BIT_OFF( 0x40000000 + 55 );
+					break;
+				case 10: // Sumire
+					BIT_OFF( 0x40000000 + 155 ); // Sumire?
+					//BIT_OFF( 0x40000000 + 56 );
+					BIT_ON( 805306368 + 13 ); // ???
+					break;
+			}
+		}
+		else {
+			BIT_OFF( 0x40000000 + flg );
+		}
+	}
 }
 
 void EnablePartyEditing()
@@ -2179,7 +2186,9 @@ void SelectNavigator()
             BIT_ON( 0 + 0x0800 + 0x0800 + 0x1000 + 13 );
             BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 12 );
             break;
-        case 2: // None
+		case 2: // Akechi
+			break;
+        case 3: // None
             BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 12 );
             BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 13 );
             break;
@@ -2433,13 +2442,6 @@ void CleanlinessEditorDisplay()
     }
 }
 
-// About Dialog
-void AboutDialogDisplay() 
-{
-    DisplayMessagePrompt( AboutDlg );
-    DisplayMessagePrompt( AboutDlg2 );
-}
-
 void ReloadPreviousField()
 {   
     if ( FLD_GET_MAJOR() != FLD_GET_PREV_MAJOR() || FLD_GET_MINOR() != FLD_GET_PREV_MINOR() )
@@ -2481,14 +2483,6 @@ void CalendarFade()
     FADE_SYNC();
 }
 
-// Ray's functions starts here
-
-// Coming Soon dialog
-void ComingSoon() 
-{
-    DisplayMessagePrompt( ComingSoon );
-}
-
 // Fast rank up commus
 void RankUpCommu(int cmmId, int lvl) 
 {
@@ -2516,20 +2510,7 @@ void MoviePlay()
     MOVIE_SYNC();
 }
 
-// Fast message callback
-void Message(string message)
-{
-    // Display the dialog window
-    MSG_WND_DSP(); 
-
-    // Display dialog
-    MSG( message, 0 ); 
-    
-    // Close the dialog window
-    MSG_WND_CLS(); 
-}
-
-// Max all commus ranks in one shot (expect animation shit taking long)
+// Max all commus
 void MaxAllCommus()
 {
     for (int i = 0; i <= 23; i++)
@@ -2602,7 +2583,6 @@ void ALL_LEVEL_MAX()
         localVariable8 = localVariable8 + 1;
         goto _38;
     }
-
 }
 
 void SetAkechiRobinHood()
@@ -2614,7 +2594,6 @@ void SetAkechiRobinHood()
     SET_EQUIP( 10, 2, 0x2000 + 271 );
 }
 
-// WIP, can't check correctly since I CAN'T FUCKING READ CHINESE
 void SetSumire()
 {
     SET_PERSONA_LV( 10, 240, 53 );

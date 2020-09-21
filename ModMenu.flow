@@ -178,9 +178,6 @@ void PersonaEditorOpen()
 			case 4:
                 EvolvePersona();
                 break;
-            case 5:
-                EvolvePersonaR();
-                break;
         }
     }
 }
@@ -336,50 +333,7 @@ void EvolvePersona()
 				PERSONA_EVOLUTION( i );
 			}
 			break;
-}
-
-void EvolvePersonaR()
-{
-    int selection = SEL_GENERIC_NOT_HELP( -1, UnitSelect3 );
-
-    switch ( selection )
-    {
-        case -1:
-            break;
-        case 0:
-            PERSONA_EVOLUTION_02( 2 );
-            break;
-        case 1:
-            PERSONA_EVOLUTION_02( 3 );
-            break;
-        case 2:
-            PERSONA_EVOLUTION_02( 4 );
-            break;
-        case 3:
-            PERSONA_EVOLUTION_02( 5 );
-            break;
-        case 4:
-            PERSONA_EVOLUTION_02( 6 );
-            break;
-        case 5:
-            PERSONA_EVOLUTION_02( 7 );
-            break;
-        case 6:
-            PERSONA_EVOLUTION_02( 8 );
-            break;
-        case 7:
-            PERSONA_EVOLUTION_02( 9 );
-            break;
-        case 8:
-            PERSONA_EVOLUTION_02( 10 );
-            break;
-		case 9:
-			for ( int i = 2; i <= 10; i++ ) 
-			{
-				PERSONA_EVOLUTION_02( i );
-			}
-			break;
-    }
+	}
 }
 
 // Stat Editor
@@ -1800,7 +1754,6 @@ void CalendarEditorDisplay()
 			case 4: // Third semester
                 SET_DBG_DAY( 1, 11, 1 );
                 SET_NEXT_DAY( 1, 11, 2 );
-                MSG(RankUp1, 0);
                 MaxNewCommu();
                 CallCalendar();
                 break;
@@ -2608,6 +2561,8 @@ void SetSumire()
 
 void SetAkechiBlackMask()
 {
+	int localVariable31 = 0;
+	
     SET_PERSONA_LV( 10, 240, 75 );
     REMOVE_PERSONA_SKILL( 10, 240, 253 );
     REMOVE_PERSONA_SKILL( 10, 240, 58 );
@@ -2617,8 +2572,6 @@ void SetAkechiBlackMask()
     ADD_PERSONA_SKILL( 10, 240, 302 );
     ADD_PERSONA_SKILL( 10, 240, 979 );
     ADD_PERSONA_SKILL( 10, 240, 857 );
-    -2;
-    0x00008000 + 255;
     
     if ( REM( localVariable31, 100 ) == WAIT( 10 ) )
     {
@@ -2632,8 +2585,6 @@ void SetAkechiBlackMask()
 
     SET_EQUIP( 10, 0, 0 + 251 );
     SET_EQUIP( 10, 1, 0x1000 + 11 );
-    74;
-    1;
     
     if ( REM( localVariable31, 100 ) <= WAIT( 9 ) )
     {
@@ -2641,7 +2592,6 @@ void SetAkechiBlackMask()
     }
     else 
     {
-        1;
         WAIT( 9 );
         SET_PERSONA_LV( 9, 209, REM( localVariable31, 100 ) );
     }
@@ -2675,8 +2625,6 @@ void SetAkechiBlackMask()
     ADD_PERSONA_SKILL( 9, 239, 985 );
     ADD_PERSONA_SKILL( 9, 239, 840 );
     ADD_PERSONA_SKILL( 9, 239, 838 );
-    -2;
-    0x00008000 + 249;
     
     if ( REM( localVariable31, 100 ) == WAIT( 9 ) )
     {

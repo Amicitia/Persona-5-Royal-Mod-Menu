@@ -19,9 +19,9 @@ copy .\camp\shared\sharedUI.spd "%OUTPUT_PATH%\camp\shared\sharedUI.spd"
 %PAKPACK% unpack "%INPUT_PATH%\dngPack.pac"   %INPUT_PATH%\extracted
 %PAKPACK% unpack "%INPUT_PATH%\fldPack.pac"   %INPUT_PATH%\extracted
 
-%COMPILER% .\field\field.bf.flow    -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\field\field.bf" -Hook
-%COMPILER% .\dungeon\dungeon.bf.flow -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\field\dungeon.bf" -Hook
-%COMPILER% .\mementos\at_dng.bf.flow -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\field\at_dng.bf" -Hook
+%COMPILER% .\field\field.bf.flow    -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\field.bf" -Hook
+%COMPILER% .\dungeon\dungeon.bf.flow -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\dungeon.bf" -Hook
+%COMPILER% .\mementos\at_dng.bf.flow -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\at_dng.bf" -Hook
 %COMPILER% .\introduction\fscr0150_002_100.bf.flow -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\script\field\fscr0150_002_100.bf"
 
 %PAKPACK% replace "%INPUT_PATH%\fldPack.pac"   etc/field.bf   "%OUTPUT_PATH%\field\field.bf"   "%OUTPUT_PATH%\field\fldPack.pac"

@@ -449,7 +449,6 @@ Delete Personas[f 4 26 1 211][e]
 Add Skill[f 4 26 2 212][e]
 Unlock Full Compendium[f 4 26 3 213][e]
 Evolve Persona[f 4 26 4 214][e]
-Evolve Persona (Royal)[f 4 26 5 215][e]
 
 [dlg GENERIC_HELP_210]
 [s]Input a Persona's name or ID[n]to add it to your stock.[e]
@@ -465,9 +464,6 @@ Evolve Persona (Royal)[f 4 26 5 215][e]
 
 [dlg GENERIC_HELP_214]
 [s]Evolve a party member's Persona[n]into its Ultimate form.[e]
-
-[dlg GENERIC_HELP_215]
-[s]Evolve a party member's Persona[n]into its Royal form.[e]
 
 [dlg UnitMenuName]
 Select Party Member[w][e]
@@ -571,87 +567,87 @@ Select a bgm to play.[w][e]
 Flag Options[w][e]
 
 [sel FlagMenu]
-HUD Display[f 4 26 0 237][e]
-Add Party Members[f 4 26 1 238][e]
-Remove Party Members[f 4 26 2 239][e]
-Enable Party Editing[f 4 26 3 240][e]
-Add Overworld Follower[f 4 26 4 241][e]
-Navigator[f 4 26 5 242][e]
-Change Romance Route[f 4 26 6 243][e]
-Room Editor[f 4 26 7 244][e]
-Manual Input[f 4 26 8 245][e]
-Print Enabled Flags[f 4 26 9 246][e]
-Mass Flag Editor[f 4 26 10 247][e]
+HUD Display[f 4 26 0 236][e]
+Add Party Members[f 4 26 1 237][e]
+Remove Party Members[f 4 26 2 238][e]
+Enable Party Editing[f 4 26 3 239][e]
+Add Overworld Follower[f 4 26 4 240][e]
+Navigator[f 4 26 5 241][e]
+Change Romance Route[f 4 26 6 242][e]
+Room Editor[f 4 26 7 243][e]
+Manual Input[f 4 26 8 244][e]
+Print Enabled Flags[f 4 26 9 245][e]
+Mass Flag Editor[f 4 26 10 246][e]
 
-[dlg GENERIC_HELP_237]
+[dlg GENERIC_HELP_236]
 [s]Show or hide the user interface[n]elements, such as the date, time,[n]and mission list.[e]
 
-[dlg GENERIC_HELP_238]
+[dlg GENERIC_HELP_237]
 [s]Make a Persona user available to[n]add to your party.[e]
 
-[dlg GENERIC_HELP_239]
+[dlg GENERIC_HELP_238]
 [s]Revoke a Persona user's[n]availability to be added[n]to your party.[e]
 
-[dlg GENERIC_HELP_240]
+[dlg GENERIC_HELP_239]
 [s]Allow choosing your own[n]party members from the Stats[n]menu in the pause menu.[e]
 
-[dlg GENERIC_HELP_241]
+[dlg GENERIC_HELP_240]
 [s]Enable or disable party[n]members following you[n]in the overworld.[e]
 
-[dlg GENERIC_HELP_242]
+[dlg GENERIC_HELP_241]
 [s]Change which character[n]currently serves as the Navigator.[e]
 
-[dlg GENERIC_HELP_243]
+[dlg GENERIC_HELP_242]
 [s]Start or end a relationship with[n]a female Confidant.[e]
 
-[dlg GENERIC_HELP_244]
+[dlg GENERIC_HELP_243]
 [s]Modify the state of the[n]protagonist's bedroom in[n]the Leblanc attic.[e]
 
-[dlg GENERIC_HELP_245]
+[dlg GENERIC_HELP_244]
 [s]Enter an 4-digit decimal value[n]of a bit to either[n]enable or disable it.[e]
 
-[dlg GENERIC_HELP_246]
+[dlg GENERIC_HELP_245]
 [s]Print all currently enabled[n]bit flag values to the[n]TTY log.[e]
 
-[dlg GENERIC_HELP_247]
+[dlg GENERIC_HELP_246]
 [s]Manipulate a selected[n]range of bit flags to[n]toggle or print.[e]
 
 [dlg FieldMenuName]
 Field Select[e]
 
 [sel FieldMenu]
-Enter Field ID[f 4 26 0 250][e]
-Load Field[f 4 26 1 251][e]
-Reload Current Field[f 4 26 2 252][e]
+Enter Field ID[f 4 26 0 249][e]
+Load Field[f 4 26 1 250][e]
+Reload Current Field[f 4 26 2 251][e]
 
-[dlg GENERIC_HELP_250]
+[dlg GENERIC_HELP_249]
 [s]Input the 6 digits of a[n][clr 9]field pack's[clr 0] filename[n](found in ps4R.cpk/field)[e]
 
-[dlg GENERIC_HELP_251]
+[dlg GENERIC_HELP_250]
 [s]Attempt to load the selected[n]field. [clr 9]WARNING: Some fields may[n]softlock the game.[clr 0][e]
 
-[dlg GENERIC_HELP_252]
+[dlg GENERIC_HELP_251]
 [s]Reload the field that[n]you're currently on.[e]
 
 [dlg EventMenuName]
 Event Select[e]
 
 [sel EventMenu]
-Enter Event ID[f 4 26 0 255][e]
-Load Event[f 4 26 1 256][e]
-Enter KeyFree Event ID[f 4 26 2 257][e]
-Load KeyFree Event[f 4 26 3 258][e]
+Enter Event ID[f 4 26 0 254][e]
+Load Event[f 4 26 1 255][e]
+Enter KeyFree Event ID[f 4 26 2 256][e]
+Load KeyFree Event[f 4 26 3 257][e]
 
-[dlg GENERIC_HELP_255]
+[dlg GENERIC_HELP_254]
 [s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in dataR.cpk/event)[e]
 
-[dlg GENERIC_HELP_256]
+[dlg GENERIC_HELP_255]
 [s]Attempt to load the selected[n]event. [clr 9]WARNING: Some events may[n]softlock the game.[clr 0][e]
 
-[dlg GENERIC_HELP_257]
+[dlg GENERIC_HELP_256]
 [s]Input the 6 digits of a[n][clr 9]event pack's[clr 0] filename[n](found in ps4R.cpk/field).[clr 0][e]
 
-[dlg GENERIC_HELP_258]
+[dlg GENERIC_HELP_257]
 [s]Attempt to load the selected[n]KeyFree event. [clr 9]WARNING: Some events may[n]softlock the game.[clr 0][e]
 
 [dlg NaviMenuName]
@@ -978,13 +974,13 @@ Add Persona (Manual Input)[e]
 [dlg BagShowHide]
 The bag has been toggled.[n]To see the change, go to a new field[n]or reload the current one.[w][e]
 
-[dlg GENERIC_HELP_308]
+[dlg GENERIC_HELP_307]
 Removes swaying effect[n]of the camera used[n]in dungeons.[w][e]
 
-[dlg GENERIC_HELP_309]
+[dlg GENERIC_HELP_308]
 Select an item's model ID to[n]spawn it and connect it to[n]the character's model.[w][e]
 
-[dlg GENERIC_HELP_310]
+[dlg GENERIC_HELP_309]
 Select a range of flags[n]to either enable or disable.[w][e]
 
 [dlg ItemSpawnPrompt]
@@ -1005,7 +1001,7 @@ Enter the start of the[n]range to narrow down.[n](Max 4 digits, press Circle to 
 [dlg FlagRangePrompt2]
 Enter the end of the[n]range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
 
-[dlg GENERIC_HELP_317]
+[dlg GENERIC_HELP_316]
 Unlocks all Personas in the[n]Compendium. [clr 9]This will delete all[n]Personas in your current stock![clr 0][w][e]
 
 [dlg MoviePlayPrompt[Movie Select]]

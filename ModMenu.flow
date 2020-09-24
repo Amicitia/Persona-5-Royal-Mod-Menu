@@ -38,7 +38,7 @@ void ModMenuDisplay()
         switch ( selection )
         {
             case -1:
-                break;
+                return;
             case 0:
                 PlayerEditorDisplay();
                 break;

@@ -446,7 +446,7 @@ void CommuSetRankSelect()
 {
     int cmmId = SEL_GENERIC( CommuMenuName, CommuMenu ) + 1;
     
-    if ( cmmId <= 0 || cmmId >= 22 )
+    if ( cmmId <= 0 || cmmId >= 23 )
         return;
         
     DisplayMessagePrompt( CmmDialog2 );
@@ -1847,8 +1847,6 @@ void ChangeWeather()
 // Flags Editor
 void FlagsEditorDisplay() 
 {
-    // Flags start at 0x2D66 in the save file
-    // section is 0x460 bytes long
     while ( true )
     {
         int selection = SEL_GENERIC( FlagMenuName, FlagMenu );
@@ -1860,38 +1858,63 @@ void FlagsEditorDisplay()
             case 0:
                 SelectHUDDisplayFlag();
                 break;
-            case 1:
+			case 1:
+				ManagePartyMembers();
+				break;
+			case 2:
+				ManageHideout();
+				break;
+            case 3:
+                SelectRomanceFlags();
+                break;
+            case 4:
+                RoomEditorDisplay();
+                break;
+            case 5: // Manual Input
+                SelectBitToggle();
+                break;
+            case 6:
+                PrintEnabledBits();
+                break;
+            case 7:
+                FlagMassEditor();
+                break;
+			case 8:
+				ThirdSemesterFlags();
+				break;
+        }
+    }
+}
+
+void ManagePartyMembers() {
+    while ( true )
+    {
+        int selection = SEL_GENERIC( PartyFlagMenuName, PartyFlagMenu );
+        
+        switch (selection)
+        {
+            case -1:
+                return;
+			case 0:
                 SelectAddPartyMember();
                 break;
-            case 2:
+            case 1:
                 SelectRemovePartyMember();
                 break;
-            case 3:
+            case 2:
                 EnablePartyEditing();
                 break;
-			case 4:
+			case 3:
 				SelectFollowers();
+				break;
+			case 4:
+				ToggleShowtimes();
 				break;
             case 5:
                 SelectNavigator();
                 break;
-            case 6:
-                SelectRomanceFlags();
-                break;
-            case 7:
-                RoomEditorDisplay();
-                break;
-            case 8: // Manual Input
-                SelectBitToggle();
-                break;
-            case 9:
-                PrintEnabledBits();
-                break;
-            case 10:
-                FlagMassEditor();
-                break;
-        }
-    }
+		}
+	}
 }
 
 void FlagMassEditor() {
@@ -2026,7 +2049,7 @@ void SelectHUDDisplayFlag()
 
 void SelectAddPartyMember()
 {
-    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect3 );
+    int unitIdSelected = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
     int flg = unitIdSelected + 48;
     if ( flg == 47 ) // Cancel
         return;
@@ -2042,6 +2065,7 @@ void SelectAddPartyMember()
         switch ( unitIdSelected ) {
             case 9: // Black Mask
                 BIT_ON( 0x40000000 + 272 ); // Enables Black Mask's flag
+				SetAkechiBlackMask();
                 //BIT_OFF( 0x40000000 + 55 );
                 break;
             case 10: // Sumire
@@ -2106,19 +2130,35 @@ void EnablePartyEditing()
 
 void SelectFollowers()
 {
-	int unit = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
-	unit = unit + 4114;
+	int flag = SEL_GENERIC_NOT_HELP( UnitMenuName, UnitSelect2 );
+	flag = flag + 4114;
 	BIT_ON( 4161 );
+	ToggleFlag(flag + 4114);
+}
+
+void ToggleShowtimes()
+{
+	int flag = SEL_GENERIC_NOT_HELP( ShowtimeMenuName, ShowtimeMenu );
+	ToggleFlag(flag + 11525);
+}
+
+void ThirdSemesterFlags()
+{
+	int flag = SEL_GENERIC_NOT_HELP( ThirdSemesterMenuName, ThirdSemesterMenu );
+	ToggleFlag(flag + 02121);
+}
+
+void ToggleFlag(int flag) {
 	int onOff = SEL_GENERIC_NOT_HELP( -1, SelectOnOff );
     switch (onOff) 
     {
         case -1: // Back
             break;
         case 0: // On
-            BIT_ON( unit );
+            BIT_ON( flag );
             break;
         case 1: // Off
-            BIT_OFF( unit );
+            BIT_OFF( flag );
             break;
     }
 }
@@ -2132,18 +2172,58 @@ void SelectNavigator()
         case -1:
             break;
         case 0: // Morgana
-            BIT_ON( 0 + 0x0800 + 0x0800 + 0x1000 + 12 );
-            BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 13 );
+            BIT_OFF( 11277 );
+			BIT_OFF( 11543 );
+			BIT_ON( 11276 );
             break;
         case 1: // Futaba
-            BIT_ON( 0 + 0x0800 + 0x0800 + 0x1000 + 13 );
-            BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 12 );
+            BIT_OFF( 11276 );
+			BIT_OFF( 11543 );
+			BIT_ON( 11277 );
             break;
 		case 2: // Akechi
+			BIT_OFF( 11276 );
+			BIT_OFF( 11277 );
+			BIT_ON( 11543 );
 			break;
         case 3: // None
-            BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 12 );
-            BIT_OFF( 0 + 0x0800 + 0x0800 + 0x1000 + 13 );
+			BIT_OFF( 11543 );
+            BIT_OFF( 11277 );
+            BIT_OFF( 11276 );
+            break;
+    }
+}
+
+void ManageHideout() {
+    int hideout = 74 + SEL_GENERIC_NOT_HELP( HideoutMenuName, HideoutMenu );
+    
+    switch ( hideout ) 
+    {
+        case 73:
+            break;
+        case 74: // School Rooftop
+            BIT_ON( 74 );
+            BIT_OFF( 75 );
+			BIT_OFF( 76 );
+			BIT_OFF( 77 );
+            break;
+        case 75: // Shibuya Walkway
+            BIT_OFF( 74 );
+            BIT_ON( 75 );
+			BIT_OFF( 76 );
+			BIT_OFF( 77 );
+            break;
+		case 76: // Leblanc Floor 2
+			BIT_OFF( 74 );
+            BIT_OFF( 75 );
+			BIT_ON( 76 );
+			BIT_OFF( 77 );
+            break;
+        case 77: // Leblanc Floor 1
+			BIT_OFF( 74 );
+            BIT_OFF( 75 );
+			BIT_OFF( 76 );
+			BIT_ON( 77 );
             break;
     }
 }
@@ -2163,19 +2243,7 @@ void SelectBitToggle()
     if (id == -1)
         return;
     
-    int onOff = SEL_GENERIC_NOT_HELP( -1, SelectOnOff );
-    
-    switch (onOff) 
-    {
-        case -1: // Back
-            break;
-        case 0: // On
-            BIT_ON( id );
-            break;
-        case 1: // Off
-            BIT_OFF( id );
-            break;
-    }
+    ToggleFlag(id);
 }
 
 void SelectItemToggle(int flag) 

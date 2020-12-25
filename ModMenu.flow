@@ -149,6 +149,9 @@ void PlayerEditorDisplay()
 			case 10: // Set level 99
                 ALL_LEVEL_MAX();
                 break;
+			case 11:
+				SetMaxHPSP();
+				break;
         }
     }
 }
@@ -2604,6 +2607,19 @@ void ALL_LEVEL_MAX()
         localVariable8 = localVariable8 + 1;
         goto _38;
     }
+}
+
+void SetMaxHPSP()
+{
+	for ( int i = 0; i <= 10; i++ ) 
+	{
+		int currHP = GET_MAXHP(i);
+		int currSP = GET_MAXSP(i);
+		ADD_MAXHP_UP(i, 999 - currHP);
+		ADD_MAXSP_UP(i, 999 - currSP);
+		SET_HP(i, 999);
+		SET_SP(i, 999);
+	}
 }
 
 void SetAkechiRobinHood()

@@ -2592,7 +2592,7 @@ void ALL_LEVEL_MAX()
     
     if ( localVariable8 < 11 )
     {
-        int localVariable9 = FUNCTION_17B( localVariable8 );
+        int localVariable9 = GET_EQUIP_PERSONA_ID( localVariable8 );
         SET_PERSONA_LV( localVariable8, localVariable9, 99 );
         localVariable10 = 0;
         _40:
@@ -2657,7 +2657,7 @@ void SetAkechiBlackMask()
     ADD_PERSONA_SKILL( 10, 240, 979 );
     ADD_PERSONA_SKILL( 10, 240, 857 );
     
-    if ( REM( localVariable31, 100 ) == WAIT( 10 ) )
+    if ( REM( localVariable31, 100 ) 10 )
     {
         SET_EQUIP( 10, 4, 0x00008000 + 255 );
     }
@@ -2670,7 +2670,7 @@ void SetAkechiBlackMask()
     SET_EQUIP( 10, 0, 0 + 251 );
     SET_EQUIP( 10, 1, 0x1000 + 11 );
     
-    if ( REM( localVariable31, 100 ) <= WAIT( 9 ) )
+    if ( REM( localVariable31, 100 ) <= 9 )
     {
         SET_PERSONA_LV( 9, 209, 75 );
     }
@@ -2710,7 +2710,7 @@ void SetAkechiBlackMask()
     ADD_PERSONA_SKILL( 9, 239, 840 );
     ADD_PERSONA_SKILL( 9, 239, 838 );
     
-    if ( REM( localVariable31, 100 ) == WAIT( 9 ) )
+    if ( REM( localVariable31, 100 ) 9 )
     {
         SET_EQUIP( 9, 4, 0x00008000 + 249 );
     }

@@ -1,4 +1,4 @@
-msgReindex.exe ModMenu.msg 91
+msgReindex.exe ModMenu.msg 182
 
 set PAKPACK="path to PAKPack.exe"
 set COMPILER="path to AtlusScriptCompiler.exe"
@@ -22,7 +22,7 @@ copy .\camp\shared\sharedUI.spd "%OUTPUT_PATH%\camp\shared\sharedUI.spd"
 %COMPILER% .\field\field.bf.flow    -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\field.bf" -Hook
 %COMPILER% .\dungeon\dungeon.bf.flow -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\dungeon.bf" -Hook
 %COMPILER% .\mementos\at_dng.bf.flow -Compile -OutFormat V3BE -Library P5R -Encoding P5 -Out "%OUTPUT_PATH%\field\at_dng.bf" -Hook
-%COMPILER% .\script\field\fscr0150_002_100_hook.flow -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\script\field\fscr0150_002_100.bf"
+%COMPILER% .\script\field\fscr0150_002_100_hook.flow -Compile -OutFormat V3BE -Library P5 -Encoding P5 -Out "%OUTPUT_PATH%\script\field\fscr0150_002_100.bf" -Hook
 
 %PAKPACK% replace "%INPUT_PATH%\fldPack.pac"   etc/field.bf   "%OUTPUT_PATH%\field\field.bf"   "%OUTPUT_PATH%\field\fldPack.pac"
 %PAKPACK% replace "%INPUT_PATH%\dngPack.pac"   etc/dungeon.bf "%OUTPUT_PATH%\field\dungeon.bf" "%OUTPUT_PATH%\field\dngPack.pac"

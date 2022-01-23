@@ -3,7 +3,7 @@ import( "introduction.msg" );
 
 void General_0150_002_100_hook()
 {
-	BIT_OFF( 8453 );
+	BIT_OFF( 11781 );
 	BIT_OFF( 320 );
 	MSG_SYSTEM( ModMenuEnable ); 
 	

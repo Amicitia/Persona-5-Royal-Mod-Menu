@@ -1986,9 +1986,9 @@ void PrintEnabledBits() {
 
 void ToggleRange() {
     DisplayMessagePrompt( FlagRangePrompt );
-    int range1 =  SelectNumber( 4 );
+    int range1 =  SelectNumber( 5 );
     DisplayMessagePrompt( FlagRangePrompt2 );
-    int range2 = SelectNumber( 4 );
+    int range2 = SelectNumber( 5 );
     
     int onOff = SEL_GENERIC_NOT_HELP( -1, SelectOnOff );
     
@@ -1999,7 +1999,8 @@ void ToggleRange() {
         case 0: // On
             for ( int i = range1; i < range2; i++ ) 
             {
-				if (i != 320) 
+				// Don't disable mod menu or triangle menu (disables thief assist in Royal)
+				if ( i != 320 && i != 11781 ) 
 				{
 					BIT_ON( i );
 				}

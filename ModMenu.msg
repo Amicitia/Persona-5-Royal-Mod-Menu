@@ -23,7 +23,7 @@ Amicitia Mod Menu[w][e]
 [s]Choose a battle type[n]to start, then begin[n]fighting![e]
 
 [dlg GENERIC_HELP_186]
-[s]Clip through walls and[n]explore out of bounds.[n]Square to change axis.[e]
+[s]Clip through walls and[n]explore out of bounds.[n][clr 18]□ button[clr 0] to change axis.[e]
 
 [dlg GENERIC_HELP_187]
 [s]Enter a BGM ID to[n]play an audio track.[e]
@@ -279,16 +279,16 @@ Kindness[f 4 26 4 255][e]
 [s]Increase your[n][clr 26]Kindness[clr 0] stat by[n]a number of points.[e]
 
 [dlg StatPrompt [Stats]]
-Add how many points?[n](max. 2 digits, press Circle to end)[w][e]
+Add how many points?[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg ItemPrompt [Items]]
-Enter the item ID you want.[n](max. 4 digits, press Circle to end)[w][e]
+Enter the item ID you want.[n](max. 4 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg ItemPrompt2 [Items]]
-Enter how many items you want.[n](max. 2 digits, press Circle to end)[w][e]
+Enter how many items you want.[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg CmmDialog [Confidant Rank]]
-Enter the Confidant's Arcana ID.[n](max. 2 digits, press Circle to end)[w][e]
+Enter the Confidant's Arcana ID.[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg CmmDialog2 [Confidant Rank]]
 Enter the desired Confidant rank.[w][e]
@@ -335,7 +335,7 @@ Playback animation[f 4 26 5 270][e]
 [s]Execute the animation playback[n][clr 9]after the above settings[clr 0][n]have been completed.[e]
 
 [dlg ScalePrompt [Scale Model]]
-Set the character's model scale.[n](press Circle to end)[n]Default is 10.[w][e]
+Set the character's model scale.[n]([clr 2]○ button[clr 0] to end)[n]Default is 10.[w][e]
 
 [dlg CameraMenuName]
 Camera Options[w][e]
@@ -350,7 +350,7 @@ Lock Camera[f 4 26 5 279][e]
 Disable Camera Shake[f 4 26 6 280][e]
 
 [dlg GENERIC_HELP_274]
-[s]Move the camera by[n]the X, Y or Z axis.[n]Square to change axis.[e]
+[s]Move the camera by[n]the X, Y or Z axis.[n][clr 18]□ button[clr 0] to change axis.[e]
 
 [dlg GENERIC_HELP_275]
 [s]Adjust the camera's[n]Field of View.[e]
@@ -396,34 +396,34 @@ Go to 3rd Semester[f 4 26 4 287][e]
 [s]Go to first day of[n]new Royal content.[e]
 
 [dlg CalendarPrompt[Calendar]]
-Choose what month to start in.[n](press Circle to end)[w][e]
+Choose what month to start in.[n]([clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg CalendarPrompt2 [Calendar]]
-Choose what day to start on.[n](max. 2 digits, press Circle to end)[w][e]
+Choose what day to start on.[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg EventDlg [Event Select]]
 Choose the first 3 digits of
-[n]the event to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the event to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg EventDlg2 [Event Select]]
 Choose the last 3 digits of
-[n]the event to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the event to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg KfEventDlg [KeyFree Event Select]]
 Choose the first 3 digits of
-[n]the KeyFree event to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the KeyFree event to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg KfEventDlg2 [KeyFree Event Select]]
 Choose the last 3 digits of
-[n]the KeyFree event to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the KeyFree event to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg FieldDlg [Field Select]]
 Choose the first 3 digits of
-[n]the field to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the field to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg FieldDlg2 [Field Select]]
 Choose the last 3 digits of
-[n]the field to load.[n](max. 3 digits, press Circle to end)[w][e]
+[n]the field to load.[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg SpawnMenuName]
 NPC Options[w][e]
@@ -525,49 +525,49 @@ Choose a character to add a skill to
 
 [dlg SkillPrompt [Add Skill]]
 Enter the ID of the skill to add.
-[n](max. 3 digits, press Circle to end)[w][e]
+[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg PersonaAddPrompt [Add Persona]]
 Input the ID of the Persona to add.
-[n](max. 3 digits, press Circle to end)[w][e]
+[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg NPCPrompt [Model Select]]
 Set the first (4 digits) of the NPC
-[n]filename to load. (Press Circle to end)[w][e]
+[n]filename to load. ([clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg NPCPrompt2 [Model Select]]
 Set the next (3 digits) of the NPC
-[n]model filename to load. (Press Circle to end)[w][e]
+[n]model filename to load. ([clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg NPCPrompt3 [Model Select]]
 Set the last (2 digits) of the NPC
-[n]model filename to load. (Press Circle to end)[w][e]
+[n]model filename to load. ([clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg GapPrompt [Animation Test]]
 Select the GAP ID.
-[n](max. 3 digits, press Circle to end)[w][e]
+[n](max. 3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg GapPrompt2 [Animation Test]]
 Select which animation to play.
-[n](max. 2 digits, press Circle to end)[w][e]
+[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg GapPrompt3 [Animation Test]]
 Select whether to loop or not.[w][e]
 
 [dlg GapPrompt4 [Animation Test]]
 Select the third parameter.
-[n](max. 2 digits, press Circle to end)[w][e]
+[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg GapPrompt5 [Animation Test]]
 Select the animation speed. Default is 10.
-[n](max. 2 digits, press Circle to end)[w][e]
+[n](max. 2 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg GapPrompt6 [Animation Test]]
 Select the number of seconds to play.[w][e]
 
 [dlg CameraPrompt [Camera Mode]]
 Use the D-Pad to manipulate the camera.
-[n]Press Triangle to quit.
+[n]Press [clr 4]△ button[clr 0] to quit.
 [n](Camera must be locked first!)[w][e]
 
 [dlg SelectBgmDialog [Ultimate DJ TGE]]
@@ -736,14 +736,14 @@ Hifumi[e]
 Sumire[e]
 
 [dlg AboutDlg[About this menu]]
-Created by [clr 1]TGE[clr 0], [clr 6]ShrineFox[clr 0]
-[n]and [clr 9]CaptainSwag101[clr 0] using TGE's 
-[n]AtlusScriptCompiler tool.[w][e]
+Created by [clr 6]ShrineFox[clr 0] using [clr 1]TGE[clr 0]'s
+[n][clr 1]Atlus-Script-Tools[clr 0].
+[n]github.com/tge-was-taken/Atlus-Script-Tools[w][e]
 Special thanks to [clr 1]@regularpanties[clr 0]
 [n]for providing a 6.72 PS4 for testing and
-[n][clr 9]RayFirefist[clr 0] for menu improvements.[w][e]
-Visit [clr 1]amicitia.github.io[clr 0]
-[n]to learn more![w][e]
+[n][clr 9]RayFirefist[clr 0] for initial P5R dev.[w][e]
+Visit [clr 1]shrinefox.com[clr 0] for
+[n]more information![w][e]
 
 [sel RoomEdit]
 Furniture[e]
@@ -1041,28 +1041,28 @@ Select an item's model ID to[n]spawn it and connect it to[n]the character's mode
 Select a range of flags[n]to either enable or disable.[w][e]
 
 [dlg ItemSpawnPrompt]
-Enter the first half of the model's[n]ID from dataR.cpk/model/item.[n](Max 4 digits, press Circle to end).[w][e]
+Enter the first half of the model's[n]ID from dataR.cpk/model/item.[n](4 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg ItemSpawnPrompt2]
-Enter the last half of the model's[n]ID from dataR.cpk/model/item.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the last half of the model's[n]ID from dataR.cpk/model/item.[n](3 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg ObjectSpawnPrompt]
-Enter the first half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the first half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](3 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg ObjectSpawnPrompt2]
-Enter the last half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](Max 3 digits, press Circle to end).[w][e]
+Enter the last half of the[n]model's ID from dataR.cpk/model/field_tex/object.[n](3 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg FlagRangePrompt]
-Enter the start of the[n]range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
+Enter the start of the[n]range to narrow down.[n](5 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg FlagRangePrompt2]
-Enter the end of the[n]range to narrow down.[n](Max 4 digits, press Circle to end).[w][e]
+Enter the end of the[n]range to narrow down.[n](5 digits, [clr 2]○ button[clr 0] to end).[w][e]
 
 [dlg GENERIC_HELP_422]
 Unlocks all Personas in the[n]Compendium. [clr 9]This will delete all[n]Personas in your current stock![clr 0][w][e]
 
 [dlg MoviePlayPrompt[Movie Select]]
-Insert the Movie ID to play.[n](Max 3 digits, press Circle to end)[w][e]
+Insert the Movie ID to play.[n](3 digits, [clr 2]○ button[clr 0] to end)[w][e]
 
 [dlg ManualBossFightPrompt[Movie Select]]
-Insert the Boss ID to play.[n](Max 2 digits, press Circle to end)[w][e]
+Insert the Boss ID to play.[n](2 digits, [clr 2]○ button[clr 0] to end)[w][e]

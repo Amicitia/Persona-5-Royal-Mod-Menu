@@ -1,3 +1,6 @@
+# ATTENTION!
+This repository is obsolete and was used for testing the PS4 version of the mod menu.  
+See [here](https://github.com/ShrineFox/Persona-5-Mod-Menu/) for the updated one.
 # Persona 5 Royal Mod Menu
 **Custom scripts for Persona 5 Royal that replace the square button function with a fully featured trainer**
 ![Image of the menu ingame](https://cdn.discordapp.com/attachments/428021649246388224/447597680018063372/unknown.png)
